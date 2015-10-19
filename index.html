@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello, Jade!</title>
-  </head>
-  <body>
-    <h1>Hello, Jade!</h1>
-    <p>これは Jade のチュートリアルです。</p>
-  </body>
+<head>
+<meta charset="UTF-8">
+<title>Hello, Jade!</title>
+<style>
+i {display: block; width: 50px; height: 50px; background: #ccc; position: absolute;}
+</style>
+</head>
+<body>
+
+<h1>Hello, Jade!</h1>
+<p>これは Jade のチュートリアルです。</p>
+
+<i></i>
+
+<script src="./src/js/jquery.min.js"></script>
+<script src="./src/js/velocity.min.js"></script>
+<script>
+$('i').velocity(
+    {
+        width: '100px',
+        height: '100px',
+        backgroundColor: '#000000',
+        translateX: '+=200px',
+        translateY: '+=200px'
+    }, {
+        // Option
+        duration: 500, // アニメーション時間
+        easing: 'ease-in-out', // イージング : linear, swing, ease, ease-in, ease-out, ease-in-out, [200, 15]
+        begin: function(){console.log('start');}, // or null
+        progress: null, // 進捗率
+        complete: function(){console.log('end');}, // or null
+        loop: 1, // 繰り返し : or false
+        delay: 0, // 開始、ループ時に遅延させる Ex.1000
+        display: 'none' // 表示・非表示 : false, 'none', 'block'
+    }
+);
+
+// 省略記法 → $('i').velocity({...}, 500, 'ease-in-out');
+</script>
+</body>
 </html>
