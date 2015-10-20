@@ -1,10 +1,10 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var jade = require('gulp-jade');
+var ejs = require('gulp-ejs');
 var path = {
     sass : './src/sass/**/*.scss',
     css : './src/css',
-    jade : './*.jade'
+    ejs : './src/ejs/**/'
 }
 
 gulp.task('sass', function() {
@@ -13,15 +13,15 @@ gulp.task('sass', function() {
         .pipe(gulp.dest(path.css));
 });
 
-gulp.task('jade', function() {
-    gulp.src(path.jade)
-        .pipe(jade({pretty: true}))
-        .pipe(gulp.dest('./'));
+gulp.task('ejs', function() {
+    gulp.src([path.ejs + '*.ejs', '!' + path.ejs + '_*.ejs'])
+        .pipe(ejs())
+        .pipe(gulp.dest('./'))
 });
 
 gulp.task('watch', function (){
     gulp.watch(path.sass, ['sass']);
-    gulp.watch(path.jade, ['jade']);
+    gulp.watch(path.ejs + '*.ejs', ['ejs']);
 });
 
-gulp.task('default', ['jade', 'sass', 'watch']);
+gulp.task('default', ['ejs', 'sass', 'watch']);

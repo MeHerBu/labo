@@ -1,5 +1,5 @@
 {
-  "name": "mama",
+  "name": "template",
   "version": "0.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -7,9 +7,8 @@
     "gulp": "^3.9.0"
   },
   "devDependencies": {
-    "gulp-jade": "^1.1.0",
+    "gulp-ejs": "^1.2.1",
     "gulp-sass": "^2.0.4",
-    "jade": "^1.11.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
