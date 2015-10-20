@@ -24,6 +24,7 @@
             background: #ccc;
         }
         #sidemenu-background{
+            display: none;
             z-index: 1000;
             position: fixed;
             top:0;
@@ -32,7 +33,6 @@
             height: 100%;
             background-color: #000;
             opacity: .5;
-            text-align: center:
         }
         #sidemenu-background-title{
             position: fixed;
@@ -46,6 +46,8 @@
     <h1>side menu</h1>
     <button type='button' id="open-sidemenu-button">click!</button>
     <div id="sidemenu"></div>
+    <div id="sidemenu-background"><div id="sidemenu-background-title">CLOSE</div></div>
+    <p>side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu</p>
     <script src="./src/js/jquery.min.js"></script>
     <script src="./src/js/velocity.min.js"></script>
     <script>
@@ -54,12 +56,12 @@
         };
         $(function(){
             $('#open-sidemenu-button').on('click',function(){
-                $('#sidemenu').after('<div id="sidemenu-background"><div id="sidemenu-background-title">CLOSE</div></div>');
+                $('#sidemenu-background').fadeIn('slow');
                 moveSidemenu('+=240px');
             });
             $(document).on('click','#sidemenu-background',function(){
                 moveSidemenu('-=240px');
-                $('#sidemenu-background').remove();
+                $('#sidemenu-background').fadeOut('slow');
             });
         });
     </script>
