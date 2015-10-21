@@ -49,23 +49,23 @@
     <div id="sidemenu-background"><div id="sidemenu-background-title">CLOSE</div></div>
     <p>side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu</p>
     <script src="./src/js/jquery.min.js"></script>
-    <!-- <script src="./src/js/velocity.min.js"></script> -->
     <script src="./src/js/jquery.easing.1.3.js"></script>
     <script>
-        // function moveSidemenu(translateVal){
-        //     $('#sidemenu').velocity({'translateX': translateVal},500,'easeInOutElastic');
-        // };
+        var time = 500;
+        var $openSidemenuButton = $('#open-sidemenu-button');
+        var $sidemenuBackground = $('#sidemenu-background');
+        var $sidemenu = $('#sidemenu');
         function moveSidemenu(translateVal){
-            $('#sidemenu').animate({'left': translateVal},500,'easeInOutElastic');
+            $sidemenu.animate({'left': translateVal},time,'easeInOutElastic');
         };
         $(function(){
-            $('#open-sidemenu-button').on('click',function(){
-                $('#sidemenu-background').fadeIn(500);
+            $openSidemenuButton.on('click',function(){
+                $sidemenuBackground.fadeIn(time);
                 moveSidemenu('+=240px');
             });
-            $(document).on('click','#sidemenu-background',function(){
+            $sidemenuBackground.on('click',function(){
                 moveSidemenu('-=240px');
-                $('#sidemenu-background').fadeOut(500);
+                $sidemenuBackground.fadeOut(time);
             });
         });
     </script>
