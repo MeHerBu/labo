@@ -10,9 +10,16 @@ var ejs = require('gulp-ejs');
 // ディレクトリパス設定
 // --------------------------------------------------------
 var path = {
-    sass : './src/sass/**/*.scss',
-    css : './src/css/',
-    ejs : './src/ejs/**/'
+    src : {
+        ejs : './src/ejs/**/',
+        sass : './src/sass/**/',
+        img : './src/img/**/'
+    },
+    dest : {
+        html : './dest/',
+        css : './dest/css/',
+        img : './dest/img/'
+    }
 }
 
 
@@ -20,22 +27,22 @@ var path = {
 // タスク設定
 // --------------------------------------------------------
 gulp.task('sass', function() {
-    gulp.src(path.sass)
+    gulp.src(path.src.sass)
         .pipe(sass({
             outputStyle: 'compressed'
         }))
-        .pipe(gulp.dest(path.css));
+        .pipe(gulp.dest(path.dest.css));
 });
 
 gulp.task('ejs', function() {
-    gulp.src([path.ejs + '*.ejs', '!' + path.ejs + '_*.ejs'])
+    gulp.src([path.src.ejs + '*.ejs', '!' + path.src.ejs + '_*.ejs'])
         .pipe(ejs())
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest(path.dest.html))
 });
 
 gulp.task('watch', function (){
-    gulp.watch(path.sass, ['sass']);
-    gulp.watch(path.ejs + '*.ejs', ['ejs']);
+    gulp.watch(path.src.sass, ['sass']);
+    gulp.watch(path.src.ejs + '*.ejs', ['ejs']);
 });
 
 gulp.task('default', ['ejs', 'sass', 'watch']);
