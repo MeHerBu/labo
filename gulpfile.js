@@ -28,7 +28,7 @@ var path = {
         img : './src/img/**/'
     },
     dest : {
-        html : './dest/',
+        html : './',
         css : './dest/css/',
         img : './dest/img/'
     }
