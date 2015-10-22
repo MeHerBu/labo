@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <title>side menu</title>
+    <title>mama media</title>
     <style>
-        button{
+        .header__body{
+            background-color: #eee;
+        }
+        .header__body__menu-button{
             font-size: 16px;
             padding: 10px;
         }
-        #close-sidemenu-button{
+        .header__body__logo{
+            margin-top: auto;
+            display: inline-block;
+        }
+        .header__tab{
+            background-color: #ccc;
+        }
+        .header__tab ul li{
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+        }
+        .close-sidemenu-button{
             position: relative;
             top:10px;
             left: 220px;
         }
-        #sidemenu {
+        .sidemenu {
             z-index: 1001;
             position: absolute;
             top:0;
-            left:-300px;
-            width: 300px;
-            height: 1000px;
-            background: #ccc;
+            left:-340px;
+            width: 240px;
+            padding-left: 100px;
+            background-color: green;
         }
-        #sidemenu-background{
+        .sidemenu__contents{
+            background-color: yellow;
+            padding: 20px;
+        }
+        .sidemenu-overlay{
             display: none;
             z-index: 1000;
             position: fixed;
@@ -34,38 +53,109 @@
             background-color: #000;
             opacity: .5;
         }
-        #sidemenu-background-title{
+        .sidemenu-overlay__title{
             position: fixed;
             right:0;
             padding: 15px;
             color:#FFF;
         }
+        .footer{
+            text-align: center;
+            background-color: #eee;
+        }
     </style>
 </head>
 <body>
-    <h1>side menu</h1>
-    <button type='button' id="open-sidemenu-button">click!</button>
-    <div id="sidemenu"></div>
-    <div id="sidemenu-background"><div id="sidemenu-background-title">CLOSE</div></div>
-    <p>side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu side menu</p>
+    <header class="header">
+        <div class="header__body">
+            <button type="button" class="header__body__menu-button">三</button>
+            <h1 class="header__body__logo">mama media</h1>
+        </div>
+        <div class="header__tab">
+            <ul>
+                <li>top</li>
+                <li>popularity</li>
+            </ul>
+        </div>
+    </header>
+    <div class="sidemenu">
+        <div class="sidemenu__contents">
+            <section class="sidemenu__contents__top">
+                <ul>
+                    <li>top top top top top top top top top</li>
+                </ul>
+            </section>
+            <section class="sidemenu__contents__category">
+                <h1>category</h1>
+                <ul>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="sidemenu-overlay">
+        <div class="sidemenu-overlay__title">
+            CLOSE
+        </div>
+    </div>
+    <main class="main-contents">
+        <section class="main-contents__new-article">
+            <h1>new article</h1>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+        </section>
+        <section class="main-contents__popularity-article">
+            <h1>popularity article</h1>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+        </section>
+    </main>
+    <div class="category">
+        <h1>category</h1>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+    </div>
+    <footer class="footer">
+        <p>&copy;mama media</p>
+    </footer>
     <script src="./src/js/jquery.min.js"></script>
-    <script src="./src/js/jquery.easing.1.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.js"></script>
     <script>
         var time = 500;
-        var $openSidemenuButton = $('#open-sidemenu-button');
-        var $sidemenuBackground = $('#sidemenu-background');
-        var $sidemenu = $('#sidemenu');
+        var $openSidemenuButton = $('.header__body__menu-button');
+        var $sidemenuOverlay = $('.sidemenu-overlay');
+        var $sidemenu = $('.sidemenu');
         function moveSidemenu(translateVal){
-            $sidemenu.animate({'left': translateVal},time,'easeInOutElastic');
+            $sidemenu.velocity({translateX: translateVal},time,[0.68, -0.55, 0.265, 1.55]);
         };
         $(function(){
             $openSidemenuButton.on('click',function(){
-                $sidemenuBackground.fadeIn(time);
+                $sidemenuOverlay.fadeIn(time);
                 moveSidemenu('+=240px');
             });
-            $sidemenuBackground.on('click',function(){
+            $sidemenuOverlay.on('click',function(){
                 moveSidemenu('-=240px');
-                $sidemenuBackground.fadeOut(time);
+                $sidemenuOverlay.fadeOut(time);
             });
         });
     </script>
