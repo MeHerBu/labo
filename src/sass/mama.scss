@@ -1,9 +1,0 @@
-h1 {
-    color: red;
-    transition: 200ms ease-out transform;
-    display: flex;
-    &:hover {
-        color: blue;
-        transform: translate(10px,0);
-  }
-}
