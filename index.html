@@ -1,43 +1,163 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Hello, Jade!</title>
-<style>
-i {display: block; width: 50px; height: 50px; background: #ccc; position: absolute;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>mama media</title>
+    <style>
+        .header__body{
+            background-color: #eee;
+        }
+        .header__body__menu-button{
+            font-size: 16px;
+            padding: 10px;
+        }
+        .header__body__logo{
+            margin-top: auto;
+            display: inline-block;
+        }
+        .header__tab{
+            background-color: #ccc;
+        }
+        .header__tab ul li{
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+        }
+        .close-sidemenu-button{
+            position: relative;
+            top:10px;
+            left: 220px;
+        }
+        .sidemenu {
+            z-index: 1001;
+            position: absolute;
+            top:0;
+            left:-340px;
+            width: 240px;
+            padding-left: 100px;
+            background-color: green;
+        }
+        .sidemenu__contents{
+            background-color: yellow;
+            padding: 20px;
+        }
+        .sidemenu-overlay{
+            display: none;
+            z-index: 1000;
+            position: fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: .5;
+        }
+        .sidemenu-overlay__title{
+            position: fixed;
+            right:0;
+            padding: 15px;
+            color:#FFF;
+        }
+        .footer{
+            text-align: center;
+            background-color: #eee;
+        }
+    </style>
 </head>
 <body>
-
-<h1>Hello, Jade!</h1>
-<p>これは Jade のチュートリアルです。</p>
-
-<i></i>
-
-<script src="./src/js/jquery.min.js"></script>
-<script src="./src/js/velocity.min.js"></script>
-<script>
-$('i').velocity(
-    {
-        width: '100px',
-        height: '100px',
-        backgroundColor: '#000000',
-        translateX: '+=200px',
-        translateY: '+=200px'
-    }, {
-        // Option
-        duration: 500, // アニメーション時間
-        easing: 'ease-in-out', // イージング : linear, swing, ease, ease-in, ease-out, ease-in-out, [200, 15]
-        begin: function(){console.log('start');}, // or null
-        progress: null, // 進捗率
-        complete: function(){console.log('end');}, // or null
-        loop: 1, // 繰り返し : or false
-        delay: 0, // 開始、ループ時に遅延させる Ex.1000
-        display: 'none' // 表示・非表示 : false, 'none', 'block'
-    }
-);
-
-// 省略記法 → $('i').velocity({...}, 500, 'ease-in-out');
-</script>
+    <header class="header">
+        <div class="header__body">
+            <button type="button" class="header__body__menu-button">三</button>
+            <h1 class="header__body__logo">mama media</h1>
+        </div>
+        <div class="header__tab">
+            <ul>
+                <li>top</li>
+                <li>popularity</li>
+            </ul>
+        </div>
+    </header>
+    <div class="sidemenu">
+        <div class="sidemenu__contents">
+            <section class="sidemenu__contents__top">
+                <ul>
+                    <li>top top top top top top top top top</li>
+                </ul>
+            </section>
+            <section class="sidemenu__contents__category">
+                <h1>category</h1>
+                <ul>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                    <li>category category category category category category category category</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="sidemenu-overlay">
+        <div class="sidemenu-overlay__title">
+            CLOSE
+        </div>
+    </div>
+    <main class="main-contents">
+        <section class="main-contents__new-article">
+            <h1>new article</h1>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+            <article>new article new article new article new article new article new article new article new article</article>
+        </section>
+        <section class="main-contents__popularity-article">
+            <h1>popularity article</h1>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+            <article>popularity article popularity article popularity article popularity article popularity article</article>
+        </section>
+    </main>
+    <div class="category">
+        <h1>category</h1>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+        <article>category</article>
+    </div>
+    <footer class="footer">
+        <p>&copy;mama media</p>
+    </footer>
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.js"></script>
+    <script>
+        var time = 500;
+        var $openSidemenuButton = $('.header__body__menu-button');
+        var $sidemenuOverlay = $('.sidemenu-overlay');
+        var $sidemenu = $('.sidemenu');
+        function moveSidemenu(translateVal){
+            $sidemenu.velocity({translateX: translateVal},time,[0.68, -0.55, 0.265, 1.55]);
+        };
+        $(function(){
+            $openSidemenuButton.on('click',function(){
+                $sidemenuOverlay.fadeIn(time);
+                moveSidemenu('+=240px');
+            });
+            $sidemenuOverlay.on('click',function(){
+                moveSidemenu('-=240px');
+                $sidemenuOverlay.fadeOut(time);
+            });
+        });
+    </script>
 </body>
 </html>
