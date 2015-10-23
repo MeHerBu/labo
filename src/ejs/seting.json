@@ -1,0 +1,30 @@
+{
+    "siteName" : "サービス名",
+    "page" : {
+        "top" : {
+            "title" : "トップ",
+            "description": "dumy description",
+            "keywords": "dumy keywords"
+        },
+        "list" : {
+            "title" : "リスト",
+            "description": "dumy description",
+            "keywords": "dumy keywords"
+        },
+        "detail" : {
+            "title" : "詳細",
+            "description": "dumy description",
+            "keywords": "dumy keywords"
+        },
+        "error" : {
+            "title" : "エラー",
+            "description": "dumy description",
+            "keywords": "dumy keywords"
+        },
+        "default" : {
+            "title" : "デフォルト",
+            "description": "dumy description",
+            "keywords": "dumy keywords"
+        }
+    }
+}
