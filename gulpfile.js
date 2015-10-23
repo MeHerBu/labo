@@ -16,7 +16,7 @@ var sass = require('gulp-sass');
 var ejs = require('gulp-ejs');
 var spritesmith = require('gulp.spritesmith');
 var imagemin = require('gulp-imagemin');
-
+var fs = require('fs');
 
 // --------------------------------------------------------
 // ディレクトリパス設定
@@ -35,7 +35,7 @@ var path = {
 }
 
 
-// --------------------------------------------------------
+// -------------------------------------------------i-------
 // タスク設定
 // --------------------------------------------------------
 gulp.task('sass', function() {
@@ -47,8 +47,9 @@ gulp.task('sass', function() {
 });
 
 gulp.task('ejs', function() {
+    var json = JSON.parse(fs.readFileSync("./src/ejs/seting.json"));
     gulp.src([path.src.ejs + '*.ejs', '!' + path.src.ejs + '_*.ejs'])
-        .pipe(ejs())
+        .pipe(ejs(json))
         .pipe(gulp.dest(path.dest.html))
 });
 
