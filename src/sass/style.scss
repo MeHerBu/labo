@@ -4,6 +4,32 @@
 // --------------------------------------------------------
 @import "./bourbon/bourbon";
 @import "sprite";
+@import "mixin";
+
+
+// --------------------------------------------------------
+// Seting
+// --------------------------------------------------------
+// Bourbon Support Prefix
+$prefix-for-webkit:    true;
+$prefix-for-mozilla:   true;
+$prefix-for-microsoft: true;
+$prefix-for-opera:     true;
+
+// Default Value
+$base_font: sans-serif;
+$base_color: #fff;
+$base_font_size: 14px;
+$base_font_color: #333;
+$key_color: #f76b1f;
+
+$link_color: #0085c3; // リンク色
+$line-height: 1.2; //行間
+$border-radius: 4px; // 角丸
+
+$color_gray: #666;
+$color_lightgrey: #ccc;
+$color_red: #d90000;
 
 
 // --------------------------------------------------------
